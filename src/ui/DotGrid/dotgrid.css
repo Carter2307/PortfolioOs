@@ -1,0 +1,13 @@
+
+.dot-grids {
+    height: 100vh;
+    width: 100vw;
+}
+
+.grids-square {
+    height: 100%;
+    width: 100%;
+    border: 1px solid transparent;
+    border-bottom-color: rgba(75, 75, 75, 0.87);
+    border-right-color: rgba(75, 75, 75, 0.87);
+}
