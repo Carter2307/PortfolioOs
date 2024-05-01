@@ -1,0 +1,15 @@
+.dock-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dock-dot {
+    height: 6px;
+    width: 6px;
+    border-radius: 9999px;
+    background-color: black;
+    opacity: .1;
+}

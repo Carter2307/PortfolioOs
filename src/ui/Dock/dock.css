@@ -1,40 +1,22 @@
-.dock-area {
+.dock{
     position: fixed;
-    bottom: 0;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-}
+    box-sizing: content-box;
 
-.dock {
-    border-radius: 14px;
-    padding-left: 8px;
-    padding-right: 8px;
-    border: 1px solid rgba(255, 255, 255, .05);
-    background-color: rgba(255, 255, 255, .1);
-    width: auto;
-    height: 54px;
+    padding: 10px;
+    padding-bottom: 6px;
+    border-radius: 20px;
+
+    background-color: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(8px);
+
+    box-shadow: 0 0 6px rgb(255, 255, 255, .2) inset;
+    border: 1px solid rgb(255, 255, 255, .2);
+
+    height: 58px;
     display: flex;
     align-items: flex-end;
-}
-
-.dock-container {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 8px;
-}
-
-.dock-app {
-    height: 38px;
-    width: 38px;
-    background: rgba(255,255,255, 1);
-    border-radius: 8px;
-    flex-shrink: 0;
+    gap: 12px;
 }
