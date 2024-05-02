@@ -5,11 +5,15 @@ import {DockCard} from "./ui/Dock/DockCard";
 
 function App() {
   const magnification = 1;
+  const app1 = new App("Calculator", "icon src","<Component/>")
+  // app1 => {_id, run, name, icon}
+
   const APPS = [
     {
       name: "Calculator",
       icon: "",
       run: () => {
+        console.log("Calculator")
       }
     },
     {
@@ -41,8 +45,8 @@ function App() {
     <>
       <Dock magnification={magnification}>
         {APPS.map((app, index) => {
-          return <DockApp key={index}>
-            <DockCard src={app.name}/>
+          return <DockApp key={index} onClick={app.run}>
+            <DockCard src={app.name} />
           </DockApp>
         })}
       </Dock>

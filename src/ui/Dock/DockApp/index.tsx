@@ -1,16 +1,14 @@
-import React, {ReactNode, useRef} from "react";
+import React, {HTMLProps, ReactElement, ReactNode, useRef} from "react";
 import './style.css'
 import {useDock} from "../dock.tsx";
 import {useMousePosition} from "../hooks/useMousePosition.ts";
-import { animated, useIsomorphicLayoutEffect, useSpringValue } from '@react-spring/web'
+import {animated, useSpringValue} from '@react-spring/web'
 
-interface DockAppProps {
-  children: ReactNode
-}
 
 const INITIAL_WIDTH = 48;
 
-export const DockApp = ({children}: DockAppProps) => {
+export const DockApp = (props) => {
+  const {children, ...rest} = props
   const dock = useDock();
   const cardRef = useRef<HTMLButtonElement>(null);
   const [elementCenterX, setElementCenterX] = React.useState(0);
@@ -57,6 +55,8 @@ export const DockApp = ({children}: DockAppProps) => {
         width: size,
         height: size
       }}
+
+      {...rest}
     >
       {children}
     </animated.button>
