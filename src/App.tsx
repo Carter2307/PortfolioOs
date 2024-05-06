@@ -1,56 +1,22 @@
-import {Dock} from "./ui/Dock/dock.tsx";
-import {DotGrid} from "./ui/DotGrid/DotGrid.tsx";
-import {DockApp} from "./ui/Dock/DockApp";
-import {DockCard} from "./ui/Dock/DockCard";
+import {Dock} from "./components/Dock/dock.tsx";
+import {DockApp} from "./components/Dock/DockApp";
+import {DockCard} from "./components/Dock/DockCard";
+import apps from "./data/apps.tsx";
+import {Header} from "./components/Header/header.tsx";
 
 function App() {
   const magnification = 1;
-  const app1 = new App("Calculator", "icon src","<Component/>")
-  // app1 => {_id, run, name, icon}
 
-  const APPS = [
-    {
-      name: "Calculator",
-      icon: "",
-      run: () => {
-        console.log("Calculator")
-      }
-    },
-    {
-      name: "Music",
-      icon: "",
-      run: () => {
-      }
-    },
-    {
-      name: "Note",
-      icon: "",
-      run: () => {
-      }
-    },
-    {
-      name: "Currency",
-      icon: "",
-      run: () => {
-      }
-    },
-    {
-      name: "Setting",
-      icon: "",
-      run: () => {
-      }
-    }
-  ]
   return (
     <>
+      <Header/>
       <Dock magnification={magnification}>
-        {APPS.map((app, index) => {
-          return <DockApp key={index} onClick={app.run}>
-            <DockCard src={app.name} />
+        {apps.map((a, index) => {
+          return <DockApp key={index} onClick={a.run} app={a}>
+            <DockCard src={a.icon} />
           </DockApp>
         })}
       </Dock>
-      <DotGrid cols={8} rows={8} squareSize={8} dotSize={4}/>
     </>
   )
 }

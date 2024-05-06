@@ -13,3 +13,8 @@
     background-color: black;
     opacity: .1;
 }
+
+.dock-dot.dock-dot-active {
+    background-color: white;
+    opacity: 1;
+}

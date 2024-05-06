@@ -8,7 +8,7 @@ import {animated, useSpringValue} from '@react-spring/web'
 const INITIAL_WIDTH = 48;
 
 export const DockApp = (props) => {
-  const {children, ...rest} = props
+  const {children, app,  ...rest} = props
   const dock = useDock();
   const cardRef = useRef<HTMLButtonElement>(null);
   const [elementCenterX, setElementCenterX] = React.useState(0);
@@ -60,7 +60,7 @@ export const DockApp = (props) => {
     >
       {children}
     </animated.button>
-    <span className={"dock-dot"}></span>
+    <span className={`dock-dot ${app.isOpen ? "dock-dot-active": ""}`}></span>
   </div>
 }
 

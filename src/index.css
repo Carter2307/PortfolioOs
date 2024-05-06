@@ -1,4 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
+  --zindex-4: 4;
+  --zindex-6: 6;
+  --zindex-8: 8;
+  --dark-500: hsla(0, 0%, 15%, 1);
+  --dark-400: hsla(0, 0%, 13%, 1);
+  --dark-300: hsl(0, 0%, 43%);
+  --text-sm: 0.75rem;
+  --fontWeight-medium: 500;
+  --radius-sm: 0.625rem;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -31,3 +45,5 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+

@@ -1,0 +1,10 @@
+.__app__terminal {
+    --terminal-height: 12.5rem;
+    --terminal-width: 25rem;
+
+    height: var(--terminal-height);
+    width: var(--terminal-width);
+    background-color: var(--dark-400);
+    padding: 0.75rem;
+    font-size: var(--text-sm);
+}
