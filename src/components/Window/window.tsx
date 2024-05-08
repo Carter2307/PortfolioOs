@@ -1,12 +1,14 @@
 import {AppT} from "../../core/App.ts";
 import React from "react";
 import Observable, {ObservableData} from "../../core/observable.ts";
-import "./window.css"
-import {UseMousePosition} from "../../hooks/useMousePosition.ts";
+import {useDrag} from "../../hooks/useGesture.ts";
+import "./window.css";
 
 interface WindowProps {
   app: AppT
 }
+
+type WindowState = "opened" | "closed" | "minimized"
 
 export function Root() {
   const [windows, setWindow] = React.useState<AppT[]>([]);
@@ -15,6 +17,7 @@ export function Root() {
   React.useEffect(() => {
     Observable.subscribe((observableData: ObservableData) => {
       if (observableData.event == "window:create") {
+        if (windows[observableData.data.id]) return;
         const w = [...windows, observableData.data];
         setWindow(w);
       }
@@ -31,6 +34,18 @@ export function Root() {
     })
   }, [Observable, windows]);
 
+  //When window is minimize
+  React.useEffect(() => {
+    Observable.subscribe((observableData: ObservableData) => {
+      if (observableData.event == "window:minimize") {
+        if (windows[observableData.data.id]) {
+          console.log(windows[observableData.data.id])
+        }
+
+      }
+    })
+  }, [Observable, windows]);
+
   return <div className={"__windows-container"}>
     {windows.map((app: AppT) => {
       return <Layout key={app.id} app={app}/>
@@ -40,75 +55,47 @@ export function Root() {
 
 export function Layout(props: WindowProps) {
   const {app, ...rest} = props;
+  const windowRef = React.useRef<HTMLDivElement>(null);
   const windowHeaderRef = React.useRef<HTMLDivElement>(null);
-  let [currentWindowPosition, setCurrentWindowPosition] = React.useState({x: 0, y: 0})
-  let [currentMousePosition, setCurrentMousePosition] = React.useState({x: 0, y: 0})
-  let [distance, setDistance] = React.useState({x: 0, y: 0});
-  let oldDist= {x: 0, y: 0};
-  const mouse = UseMousePosition();
+  const [position, setPosition] = React.useState<{ x: number, y: number }>({})
+  const ondrag = useDrag((x, y) => {
+    setPosition({x, y})
+  });
 
-  const [isMouseDown, setIsMouseDown] = React.useState(false);
+  const style = {
+    left: `${position.x}px`,
+    top: `${position.y}px`,
+  }
 
-  function onclose() {
+
+  function closeHandler() {
     Observable.notify({data: {id: app.id}, event: "window:close"})
   }
 
-
-  function onmousedown(e: MouseEvent) {
-    e.preventDefault();
-    setCurrentMousePosition({x: e.x, y: e.y});
-    setIsMouseDown(true)
-    window.addEventListener('mouseup', onmouseup)
-
+  function minimizeHandler() {
+    if (windowRef.current) {
+      Observable.notify({data: {id: app.id}, event: "window:minimize"})
+    }
   }
 
-  function onmouseup(e: MouseEvent) {
-    e.preventDefault()
-    setIsMouseDown(false);
-    setCurrentMousePosition(distance);
-    window.removeEventListener("mouseup", onmouseup)
-  }
+  /**
+   * TODO
+   * On focus on window : Make current focus window on top of other
+   * The minimize handler : Allow window to be minimized
+   * By default opent window in center of the screen
+   * Prevent window to offset menu bar
+   */
 
-  React.useEffect(() => {
-    if (!windowHeaderRef.current) return
-    const element = windowHeaderRef.current;
+  return <div className={"__window"}
+              data-window-state={`${app.state === "running" ? "opened" : "closed"}`}
+              data-app-id={app.id} ref={windowRef}
+              style={style}
+              {...rest}>
 
-    element.addEventListener('mousedown', onmousedown)
-
-    return () => {
-      window.removeEventListener("mousedown", onmousedown);
-    }
-  }, [])
-
-
-  React.useEffect(() => {
-    if (!windowHeaderRef.current) return;
-    if (isMouseDown && mouse) {
-      const {x, y} = mouse; // target position
-
-      const diff = {
-        x: x - currentMousePosition.x,
-        y: y - currentMousePosition.y,
-      }
-
-      console.log(diff)
-      setDistance(diff)
-    }
-
-  }, [isMouseDown, mouse, currentMousePosition])
-
-  React.useEffect(() => {
-    if (!windowHeaderRef.current || !mouse) return;
-    const element = windowHeaderRef.current;
-    element.style.transform = `translate3d(${oldDist.x - distance.x * -1}px, ${oldDist.y - distance.y * -1}px, 0)`;
-  }, [distance,mouse])
-
-  return <div className={"__window"} ref={windowHeaderRef} {...rest}>
-
-    <div className={"__window-header"}>
+    <div className={"__window-header"} ref={windowHeaderRef}  {...ondrag()}>
       <div className={"__window-header-actions"}>
-        <button onClick={onclose}></button>
-        <button onClick={onclose}></button>
+        <button onClick={closeHandler}></button>
+        <button onClick={minimizeHandler}></button>
       </div>
       <p className={"__window-header-title"}>{app.name}</p>
     </div>

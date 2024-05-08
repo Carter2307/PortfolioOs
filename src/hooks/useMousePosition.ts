@@ -9,6 +9,7 @@ export const UseMousePosition = () => {
   }
 
   React.useEffect(() => {
+    console.log("hsdfsdeu")
     window.addEventListener("pointermove", onmousemove)
 
     return () => {

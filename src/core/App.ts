@@ -8,6 +8,7 @@ export interface AppT {
   name: string
   icon: string
   component: ReactNode | JSX.Element
+  state: "starting" | "running" | "stopped" | "standby"
 }
 
 class App {
@@ -15,13 +16,13 @@ class App {
   name: string
   icon: string
   component: React.ReactNode | React.JSX.Element | string = "Your app here"
-  isOpen: boolean
+  state:  "starting" | "running" | "stopped" | "standbyed"
 
   constructor(app: AppT) {
     this.name = app.name;
     this.icon = app.icon;
     this.component = app.component;
-    this.isOpen= false;
+    this.state= "starting";
     Observable.subscribe(this.stop);
     this.run = this.run.bind(this)
   }
@@ -29,22 +30,24 @@ class App {
   run() {
     const found = processManager.apps.find((app) => app.id === this.id);
     if (found) {
-      throw "This process already start";
+      this.state = "running"
+      Window.open(this as AppT);
     } else {
       processManager.add(this as AppT);
+      this.state = "starting"
       this.render();
     }
   }
 
   stop = (observableData: ObservableData) => {
     if(observableData.event === "window:close") {
-      this.isOpen = false;
+      this.state = "stopped";
     }
   }
 
   render() {
+    this.state= "running";
     Window.open(this as AppT);
-    this.isOpen= true;
   }
 }
 

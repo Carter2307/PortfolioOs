@@ -60,7 +60,7 @@ export const DockApp = (props) => {
     >
       {children}
     </animated.button>
-    <span className={`dock-dot ${app.isOpen ? "dock-dot-active": ""}`}></span>
+    <span className={`dock-dot ${app.state === "running" ? "dock-dot-active": ""}`}></span>
   </div>
 }
 
