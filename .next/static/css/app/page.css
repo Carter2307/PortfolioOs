@@ -1,0 +1,218 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/ui/Dock/dock.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+.dock {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: content-box;
+
+    padding: 10px;
+    padding-bottom: 6px;
+    border-radius: 20px;
+
+    background-color: rgba(0, 0, 0, .1);
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+
+    box-shadow: 0 0 6px rgb(255, 255, 255, .2) inset;
+    border: 1px solid rgb(255, 255, 255, .2);
+
+    height: 58px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    z-index: var(--zindex-8);
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/ui/Dock/DockApp/style.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+.dock-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dock-dot {
+    height: 6px;
+    width: 6px;
+    border-radius: 9999px;
+    background-color: black;
+    opacity: .1;
+}
+
+.dock-dot.dock-dot-active {
+    background-color: white;
+    opacity: 1;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/ui/Dock/DockCard/dockCard.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.dock-card {
+    height: 48px;
+    width: 48px;
+    border-radius: 10px;
+    border: none;
+    font-size: 8px;
+
+    outline: none;
+    background-color: rgba(255, 255, 255, .3);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .06),
+    0 2px 4px rgba(0, 0, 0, .06);
+    color: white;
+
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    overflow: hidden;
+
+}
+
+.dock-card-image {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/ui/Terminal/terminal.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+.__app__terminal {
+    --terminal-height: 12.5rem;
+    --terminal-width: 25rem;
+
+    height: var(--terminal-height);
+    width: var(--terminal-width);
+    background-color: var(--dark-400);
+    padding: 0.75rem;
+    font-size: var(--text-sm);
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/ui/Logo/logo.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/ui/Header/header.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+.header {
+    position: fixed;
+    top: 1rem;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: 3rem;
+    width: 100%;
+}
+
+.header-menu-bar {
+    border-radius: 1.25rem;
+    -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+    background-color: rgba(255, 255, 255, .2);
+}
+
+.header-left-menu-bar {
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-right-menu-bar {
+    padding: 0 1.25rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/ui/Window/window.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+.__window {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: var(--zindex-4);
+    box-shadow:
+            0 0px 2px rgba(0, 0, 0, .16),
+            0 4px 4px rgba(0, 0, 0, .16),
+            0 4px 16px rgba(0, 0, 0, .24),
+            0 16px 24px rgba(0, 0, 0, .32),
+            0 24px 48px rgba(0, 0, 0, .48);
+
+}
+
+.__window:focus {
+
+}
+
+.__window-header {
+    width: 100%;
+    background-color: var(--dark-500);
+    height: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 .75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    touch-action: none;
+}
+
+.__window-header-title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: var(--text-sm);
+    font-weight: var(--fontWeight-medium);
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    pointer-events: none;
+
+}
+
+.__window-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    button {
+        all: initial;
+        outline: none;
+        height: 0.625rem;
+        width: 0.625rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        color: var(--dark-300);
+        background: red;
+        cursor: pointer;
+    }
+
+    button:nth-child(2) {
+        background: #fcce00;
+    }
+}
+
+.__window-body {
+
+}

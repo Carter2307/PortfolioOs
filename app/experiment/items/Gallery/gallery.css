@@ -1,0 +1,119 @@
+.gallery {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-image: linear-gradient( #cfcfff, #ffdcc2);
+}
+
+
+.gallery-buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 128px;
+}
+
+.gallery-cards-button {
+    position: relative;
+    height: 4rem;
+    width: 4rem;
+
+    & .gallery-card {
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+}
+
+.gallery-card-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.gallery-close-button-wrapper {
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.gallery-close-button {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 999px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(200px);
+}
+
+
+.gallery-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08),
+    0 2px 8px rgba(0, 0, 0, .12),
+    0 8px 24px rgba(0, 0, 0, .18);
+    border: 2px solid white;
+    overflow: hidden;
+    height: 4rem;
+    width:4rem;
+    border-radius: 1rem;
+    will-change: transform;
+    transform-origin: center center;
+    transition: transform .6s  cubic-bezier( 0.190,  1.000,  0.220,  1.000 );
+
+    span {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(89, 164, 239);
+    }
+}
+
+
+.gallery-fake-grid {
+    margin: 0 auto;
+    max-width: 940px;
+    max-height: 100vh;
+    padding: 4rem;
+    visibility: hidden;
+
+    .gallery-fake-grid-wrapper {
+        --card-height-final: 280px;
+        --card-width-final: 200px;
+        display: grid;
+        grid-auto-rows: var(--card-height-final);
+        grid-template-columns: repeat(3, var(--card-width-final));
+        gap: 1rem;
+    }
+}
+
+
+.rectangle {
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 1rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(205, 100%, 93%);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: black;
+}
